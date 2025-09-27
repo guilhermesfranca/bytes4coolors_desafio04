@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "color-name-list": "^13.1.0",
+    "color-namer": "^1.4.0",
     "nearest-color": "^0.4.4",
     "next": "15.5.4",
     "react": "19.1.0",

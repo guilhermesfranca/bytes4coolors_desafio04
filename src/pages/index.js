@@ -3,6 +3,7 @@ export default function Home() {
   return (
     <div>
           <Bytes4Coolors/>
+        
     </div>
   );
 }

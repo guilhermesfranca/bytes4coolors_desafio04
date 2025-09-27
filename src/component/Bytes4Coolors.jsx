@@ -1,58 +1,57 @@
 import { TbLockOpen2 } from "react-icons/tb";
 import { TbLock } from "react-icons/tb";
 import { TbCopy } from "react-icons/tb";
-
-
+import namer from "color-namer";
 import { useState, useEffect } from "react";
 
 export default function Bytes4Coolors() {
-
-    //função que gera a cor aleatória 
+  //função que gera a cor aleatória
   const generateRandomColor = () => {
     return (
       "#" +
       Math.floor(Math.random() * 16777215)
         .toString(16)
         .padStart(6, "0")
-        
     );
-    
   };
 
   const [colors, setColors] = useState([
-    { color: "#780ca0", locked: false, inicial:"B" },
-    { color: "#780ca0", locked: false, inicial:"Y"},
-    { color: "#780ca0", locked: false, inicial:"T"},
-    { color: "#780ca0", locked: false, inicial:"E"},
-    { color: "#780ca0", locked: false, inicial:"S"},    
+    { color: "#B31FF2", locked: false, inicial: "B" },
+    { color: "#B31FF2", locked: false, inicial: "Y" },
+    { color: "#B31FF2", locked: false, inicial: "T" },
+    { color: "#B31FF2", locked: false, inicial: "E" },
+    { color: "#B31FF2", locked: false, inicial: "S" },
   ]);
-
-  
 
   // Função para gerar nova paleta (mantendo cores bloqueadas)
   const generateNewPalette = () => {
     setColors((prev) =>
       prev.map((novaCor) =>
-        novaCor.locked ? novaCor : { ...prev, color: generateRandomColor(), inicial: "" } 
+        novaCor.locked
+          ? novaCor
+          : { ...prev, color: generateRandomColor(), inicial: "" }
       )
     );
-
   };
 
- const blockColor = (index) => {
-  setColors(
-    (prev) => prev.map((novaCor, i) => 
-      i === index 
-        ? { ...novaCor, locked: !novaCor.locked, inicial: "" }  // Novo objeto com locked invertido
-        : novaCor                               // Objeto original
-    )
-  );
-};
+  const blockColor = (index) => {
+    setColors((prev) =>
+      prev.map(
+        (novaCor, i) =>
+          i === index
+            ? { ...novaCor, locked: !novaCor.locked, inicial: "" } 
+            : novaCor 
+      )
+    );
+  };
 
+  const getColorName = (hex) => {
+    const names = namer(hex); // retorna várias paletas
+    return names.ntc[0].name; // pega o nome mais próximo (da paleta 'ntc')
+  };
 
   return (
-    <div className="h-screen w-full overflow-hidden">
-      {/* Header */}
+    <div className="h-screen w-full overflow-hidden"> 
       <nav className="border-gray-200 bg-white">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -91,6 +90,7 @@ export default function Bytes4Coolors() {
                 <a
                   href="https://bytes4future.pt"
                   target="_blank"
+                  rel="nofollow noreferrer"
                   className="block py-2 px-3 md:p-0 text-purple-700 text-lg font-sans font-bold rounded-sm hover:text-purple-800 "
                   aria-current="page"
                 >
@@ -101,6 +101,7 @@ export default function Bytes4Coolors() {
                 <a
                   href="https://www.linkedin.com/in/guilhermesfranca/"
                   target="_blank"
+                  rel="nofollow noreferrer"
                   className="block py-2 px-3 md:p-0 text-purple-700 text-md font-sans font-bold rounded-sm hover:text-purple-800 "
                 >
                   Linkedin
@@ -108,7 +109,9 @@ export default function Bytes4Coolors() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/guilhermesfranca/bytes4coolors_desafio04"
+                  target="_blank"
+                  rel="nofollow noreferrer"
                   className="block py-2 px-3 md:p-0 text-purple-700 text-md font-sans font-bold rounded-sm hover:text-purple-800 "
                 >
                   Repositório
@@ -116,7 +119,9 @@ export default function Bytes4Coolors() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://guilhermesfranca.github.io/portfolio-bytes/"
+                  target="_blank"
+                  rel="noreferrer nofollow"
                   className="block py-2 px-3 md:p-0 text-purple-700 text-md font-sans font-bold rounded-sm hover:text-purple-800 "
                 >
                   Portfólio
@@ -139,36 +144,42 @@ export default function Bytes4Coolors() {
       </div>
 
       <div className="flex h-full " style={{ height: "calc(100vh - 87px)" }}>
-        {/* Cor 1 */}
-        {colors.map((novaCor, index) => (
-          <div key={index}
-            className="flex-1 flex flex-col items-center justify-center relative group transition-all duration-300"
-            style={{ backgroundColor: novaCor.color }}
-          >
-           
-            <h2 className="text-6xl text-white font-sans font-bold animate-bounce">{novaCor.inicial}</h2> 
+       {colors.map((novaCor, index) => (
+  <div
+    key={index}
+    className="flex-1 flex flex-col items-center justify-center relative group transition-all duration-300"
+    style={{ backgroundColor: novaCor.color }}
+  >
+    <div className="flex flex-col items-center justify-center gap-6">
+      <h2 className="text-6xl text-white font-sans font-bold">
+        {novaCor.inicial}
+      </h2>
 
+    
+      <div className="flex flex-col gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 items-center">
+        <button
+          onClick={() => blockColor(index)}
+          className="mt-15 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110"
+        >
+          <p className="text-lg font-bold text-gray-700">
+            {colors[index].locked ? <TbLock /> : <TbLockOpen2 />}
+          </p>
+        </button>
 
-            <div className="flex flex-col gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <button 
-              onClick={() => blockColor(index)}
-              className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-bottom w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110">
-                <p className="text-lg font-bold text-gray-700">
-                  {colors[index].locked ? <TbLock /> : <TbLockOpen2 />}
-                </p>
-              </button>
+        <button className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110">
+          <p className="text-lg font-bold text-gray-700">
+            <TbCopy />
+          </p>
+        </button>
+      </div>
 
-              <button
-                className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110"
-              >
-                <p className="text-lg font-bold text-gray-700"><TbCopy/></p>
-              </button>
-               <div className="absolute bottom-15 text-lg font-mono font-bold opacity-0 group-hover:opacity-100 text-white transition-opacity duration-200">
-              {colors[index].color.toUpperCase()}
-            </div>
-            </div>
-          </div>
-        ))}
+      <div className="text-lg mt-15 font-mono font-bold opacity-0 group-hover:opacity-100 text-white transition-opacity duration-200">
+        <p className="text-center mt-">{colors[index].color.toUpperCase()}</p>
+        <p className="text-center">{getColorName(colors[index].color)}</p>
+      </div>
+    </div>
+  </div>
+))}
       </div>
     </div>
   );
