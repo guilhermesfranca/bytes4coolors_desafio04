@@ -151,7 +151,7 @@ export default function Bytes4Coolors() {
     style={{ backgroundColor: novaCor.color }}
   >
     <div className="flex flex-col items-center justify-center gap-6">
-      <h2 className="text-6xl text-white font-sans font-bold">
+      <h2 className="text-6xl text-white font-sans font-bold animate-pulse">
         {novaCor.inicial}
       </h2>
 
@@ -175,7 +175,7 @@ export default function Bytes4Coolors() {
 
       <div className="text-lg mt-15 font-mono font-bold opacity-0 group-hover:opacity-100 text-white transition-opacity duration-200">
         <p className="text-center mt-">{colors[index].color.toUpperCase()}</p>
-        <p className="text-center">{getColorName(colors[index].color)}</p>
+        <p className="text-center ">{getColorName(colors[index].color)}</p>
       </div>
     </div>
   </div>
