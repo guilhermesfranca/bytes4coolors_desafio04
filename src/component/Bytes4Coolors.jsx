@@ -36,11 +36,10 @@ export default function Bytes4Coolors() {
 
   const blockColor = (index) => {
     setColors((prev) =>
-      prev.map(
-        (novaCor, i) =>
-          i === index
-            ? { ...novaCor, locked: !novaCor.locked, inicial: "" } 
-            : novaCor 
+      prev.map((novaCor, i) =>
+        i === index
+          ? { ...novaCor, locked: !novaCor.locked, inicial: "" }
+          : novaCor
       )
     );
   };
@@ -50,8 +49,15 @@ export default function Bytes4Coolors() {
     return names.ntc[0].name; // pega o nome mais próximo (da paleta 'ntc')
   };
 
+  const copiarCor = (hex, index) => {
+    return alert(`A cor ${getColorName(
+      colors[index].color
+    )} foi copiada com sucesso
+seu código hex é: ${hex.toUpperCase()} `);
+  };
+
   return (
-    <div className="h-screen w-full overflow-hidden"> 
+    <div className="h-screen w-full ">
       <nav className="border-gray-200 bg-white">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -144,43 +150,92 @@ export default function Bytes4Coolors() {
       </div>
 
       <div className="flex h-full " style={{ height: "calc(100vh - 87px)" }}>
-       {colors.map((novaCor, index) => (
-  <div
-    key={index}
-    className="flex-1 flex flex-col items-center justify-center relative group transition-all duration-300"
-    style={{ backgroundColor: novaCor.color }}
-  >
-    <div className="flex flex-col items-center justify-center gap-6">
-      <h2 className="text-6xl text-white font-sans font-bold animate-pulse">
-        {novaCor.inicial}
-      </h2>
+        {colors.map((novaCor, index) => (
+          <div
+            key={index}
+            className="flex-1 flex flex-col items-center justify-center relative group transition-all duration-300"
+            style={{ backgroundColor: novaCor.color }}
+          >
+            <div className="flex flex-col items-center justify-center gap-6">
+              <h2 className="text-6xl text-white font-sans font-bold animate-pulse">
+                {novaCor.inicial}
+              </h2>
 
-    
-      <div className="flex flex-col gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 items-center">
-        <button
-          onClick={() => blockColor(index)}
-          className="mt-15 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110"
-        >
-          <p className="text-lg font-bold text-gray-700">
-            {colors[index].locked ? <TbLock /> : <TbLockOpen2 />}
-          </p>
-        </button>
+              <div className="flex flex-col gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 items-center">
+                <button
+                  onClick={() => blockColor(index)}
+                  className="mt-15 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110"
+                >
+                  <p className="text-lg font-bold text-gray-700">
+                    {colors[index].locked ? <TbLock /> : <TbLockOpen2 />}
+                  </p>
+                </button>
 
-        <button className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110">
-          <p className="text-lg font-bold text-gray-700">
-            <TbCopy />
-          </p>
-        </button>
+                <button
+                  onClick={() => copiarCor(colors[index].color, index)}
+                  className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 flex items-center justify-center w-14 h-14 shadow-lg transition-all duration-200 hover:scale-110"
+                >
+                  <p className="text-lg font-bold text-gray-700">
+                    <TbCopy />
+                  </p>
+                </button>
+              </div>
+
+              <div className="text-lg mt-15 font-mono font-bold opacity-0 group-hover:opacity-100 text-white transition-opacity duration-200">
+                <p className="text-center mt-">
+                  {colors[index].color.toUpperCase()}
+                </p>
+                <p className="text-center ">
+                  {getColorName(colors[index].color)}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="text-lg mt-15 font-mono font-bold opacity-0 group-hover:opacity-100 text-white transition-opacity duration-200">
-        <p className="text-center mt-">{colors[index].color.toUpperCase()}</p>
-        <p className="text-center ">{getColorName(colors[index].color)}</p>
-      </div>
-    </div>
-  </div>
-))}
-      </div>
+      <footer class="rounded-lg shadow-sm bg-neutral-50">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div class="sm:flex sm:items-center sm:justify-between">
+            <a
+              href="#"
+              class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+            >
+              <img src="/BYTESS.png" class="h-8" alt="Flowbite Logo" />
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-[#B31FF2]">
+              <li>
+                <a href="#" class="hover:underline me-4 md:me-6">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/my-next-project/src/pages/privacy.js" class="hover:underline me-4 md:me-6">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:underline me-4 md:me-6">
+                  Licensing
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:underline">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <hr class="my-6 border-purple-700 sm:mx-auto lg:my-8" />
+          <span class="block text-sm text-purple-700 sm:text-center ">
+            © 2025{" "}
+            <a href="https://flowbite.com/" class="hover:underline">
+              Franca Unltd
+            </a>
+            . All Rights Reserved.
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
