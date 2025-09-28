@@ -1,40 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Aplicação Next.js
 
-## Getting Started
+Uma aplicação web moderna construída com Next.js 15, React 19 e Tailwind CSS 4.
 
-First, run the development server:
+## Tecnologias Utilizadas
+
+- **Next.js 15.5.4** - Framework React para produção
+- **React 19.1.0** - Biblioteca para interfaces de usuário
+- **Tailwind CSS 4.1.13** - Framework CSS utilitário
+- **TypeScript** - Tipagem estática (configuração presente)
+- **shadcn/ui** - Componentes de interface reutilizáveis
+- **Lucide React** - Biblioteca de ícones
+- **React Icons** - Coleção adicional de ícones
+
+## Recursos Destacados
+
+### Estilização e Interface
+- Tailwind CSS com configuração customizada
+- Sistema de cores baseado em variáveis CSS
+- Componentes shadcn/ui integrados
+- Suporte a ícones via Lucide React e React Icons
+- Tema configurável (New York style)
+
+### Funcionalidades de Cores
+- **color-name-list** - Lista abrangente de nomes de cores
+- **color-namer** - Identificação automática de nomes de cores
+- **nearest-color** - Localização da cor mais próxima
+- **chroma-js** - Manipulação avançada de cores
+
+### Desenvolvimento
+- ESLint configurado para Next.js
+- Suporte completo ao TypeScript
+- Hot reload durante desenvolvimento
+- Otimização automática de imagens com Sharp
+
+## Pré-requisitos
+
+- Node.js 18.18.0 ou superior
+- npm, yarn, pnpm ou bun
+
+## Instalação
+
+1. Clone o repositório:
+```bash
+git clone <url-do-repositorio>
+cd <nome-da-pasta>
+```
+
+2. Instale as dependências:
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
+
+## Scripts Disponíveis
+
+```bash
+# Executar em modo de desenvolvimento
+npm run dev
+
+# Construir para produção
+npm run build
+
+# Executar versão de produção
+npm run start
+
+# Executar linter
+npm run lint
+```
+
+## Estrutura do Projeto
+
+```
+├── src/
+│   ├── components/     # Componentes React
+│   │   └── ui/        # Componentes shadcn/ui
+│   ├── styles/        # Arquivos de estilo
+│   │   └── globals.css
+│   ├── lib/           # Utilitários e configurações
+│   └── hooks/         # Custom hooks
+├── public/            # Arquivos estáticos
+└── pages/            # Páginas da aplicação (se usando Pages Router)
+```
+
+## Configuração do Tailwind CSS
+
+A aplicação utiliza Tailwind CSS 4 com as seguintes configurações:
+- Estilo: New York
+- Cores base: Neutral
+- Variáveis CSS habilitadas
+- PostCSS integrado
+
+## Desenvolvimento
+
+O projeto está configurado para desenvolvimento com:
+- Recarga automática (hot reload)
+- Linting automático
+- Suporte a TypeScript
+- Otimização de imagens
+
+Para começar a desenvolver:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) para ver a aplicação.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Funcionalidades de Cores
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Esta aplicação parece ter foco especial em manipulação de cores, oferecendo:
+- Identificação automática de nomes de cores
+- Busca por cores similares
+- Manipulação e transformação de cores
+- Interface rica para trabalhar com paletas de cores
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Build e Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para fazer o build de produção:
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Suporte a Navegadores
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- Navegadores modernos com suporte a ES6+
+- Otimizado para performance em dispositivos móveis e desktop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contribuição
 
-## Deploy on Vercel
+1. Faça fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Este projeto está sob a licença [especificar licença].
+
+---
+
+Desenvolvido com Next.js e React
