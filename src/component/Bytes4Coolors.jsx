@@ -205,22 +205,18 @@ seu código hex é: ${hex.toUpperCase()} `);
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-[#B31FF2]">
               <li>
-                <a href="#" class="hover:underline me-4 md:me-6">
+                <a href="https://guilhermesfranca.github.io/portfolio-bytes/#sobre" class="hover:underline me-4 md:me-6">
                   About
                 </a>
               </li>
               <li>
-                <a href="/my-next-project/src/pages/privacy.js" class="hover:underline me-4 md:me-6">
+                <a href="/privacy" class="hover:underline me-4 md:me-6">
                   Privacy Policy
                 </a>
               </li>
+              
               <li>
-                <a href="#" class="hover:underline me-4 md:me-6">
-                  Licensing
-                </a>
-              </li>
-              <li>
-                <a href="#" class="hover:underline">
+                <a href="/form" class="hover:underline">
                   Contact
                 </a>
               </li>
@@ -229,8 +225,8 @@ seu código hex é: ${hex.toUpperCase()} `);
           <hr class="my-6 border-purple-700 sm:mx-auto lg:my-8" />
           <span class="block text-sm text-purple-700 sm:text-center ">
             © 2025{" "}
-            <a href="https://flowbite.com/" class="hover:underline">
-              Franca Unltd
+            <a href="https://guilhermesfranca.github.io/portfolio-bytes/" class="hover:underline">
+              France Unltd
             </a>
             . All Rights Reserved.
           </span>
